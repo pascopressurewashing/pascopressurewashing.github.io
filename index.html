@@ -1,42 +1,722 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pressure Washing in Pasco County, FL</title>
   <meta name="description" content="Professional pressure washing in Pasco County, FL. We clean driveways, houses, fences, and pool cages in New Port Richey, Trinity, Holiday, and nearby areas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0a1628;
+      --blue: #1a3a6e;
+      --sky: #2979c8;
+      --cyan: #00c2e8;
+      --white: #f4f8ff;
+      --muted: #8faac8;
+      --accent: #ffcc00;
+      --surface: #0f1f3d;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(41,121,200,0.35) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(0,194,232,0.15) 0%, transparent 60%),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 79px,
+          rgba(255,255,255,0.025) 79px,
+          rgba(255,255,255,0.025) 80px
+        ),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 79px,
+          rgba(255,255,255,0.025) 79px,
+          rgba(255,255,255,0.025) 80px
+        );
+      z-index: 0;
+    }
+
+    /* animated water ripple rings */
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(0,194,232,0.2);
+      animation: rippleOut 6s ease-out infinite;
+      z-index: 0;
+    }
+    .ripple:nth-child(1) { width: 300px; height: 300px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation-delay: 0s; }
+    .ripple:nth-child(2) { width: 300px; height: 300px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation-delay: 2s; }
+    .ripple:nth-child(3) { width: 300px; height: 300px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation-delay: 4s; }
+    @keyframes rippleOut {
+      0%   { width: 200px; height: 200px; opacity: 0.5; }
+      100% { width: 800px; height: 800px; opacity: 0; }
+    }
+
+    .hero-badge {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      background: rgba(0,194,232,0.15);
+      border: 1px solid rgba(0,194,232,0.4);
+      color: var(--cyan);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      animation: fadeDown 0.6s ease both;
+    }
+
+    .hero h1 {
+      position: relative;
+      z-index: 1;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(3rem, 9vw, 7rem);
+      font-weight: 900;
+      line-height: 0.92;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      animation: fadeDown 0.7s 0.1s ease both;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--cyan);
+      -webkit-text-stroke: 0px;
+    }
+
+    .hero h1 .outline {
+      -webkit-text-stroke: 2px rgba(255,255,255,0.25);
+      color: transparent;
+    }
+
+    .hero-sub {
+      position: relative;
+      z-index: 1;
+      margin-top: 28px;
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 540px;
+      line-height: 1.65;
+      animation: fadeDown 0.7s 0.2s ease both;
+    }
+
+    .hero-cta {
+      position: relative;
+      z-index: 1;
+      margin-top: 44px;
+      animation: fadeDown 0.7s 0.3s ease both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--cyan);
+      color: var(--navy);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 36px;
+      border-radius: 4px;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      box-shadow: 0 8px 30px rgba(0,194,232,0.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(0,194,232,0.5);
+      background: #33d4f5;
+    }
+    .btn-primary svg { flex-shrink: 0; }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      animation: fadeIn 1s 1s ease both;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--muted), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50%       { opacity: 1;   transform: scaleY(1.15); }
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--surface);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 32px 24px;
+    }
+    .stats-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .stat {
+      text-align: center;
+      animation: fadeIn 0.6s ease both;
+    }
+    .stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--cyan);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 90px 24px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+    }
+
+    .section-body {
+      font-size: 1rem;
+      color: rgba(244,248,255,0.7);
+      line-height: 1.8;
+      max-width: 640px;
+    }
+
+    /* ── SERVICES ── */
+    .services-section {
+      background: var(--surface);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2px;
+      margin-top: 52px;
+    }
+
+    .service-card {
+      position: relative;
+      padding: 36px 28px;
+      background: var(--navy);
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--cyan);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover { background: #0e1f3a; }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .service-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 10px;
+    }
+
+    .service-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── WHY FLORIDA ── */
+    .why-section {
+      background: var(--navy);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 52px;
+      align-items: start;
+    }
+
+    @media (max-width: 640px) {
+      .why-grid { grid-template-columns: 1fr; }
+    }
+
+    .why-visual {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid rgba(0,194,232,0.15);
+      border-radius: 4px;
+      padding: 48px 32px;
+      text-align: center;
+    }
+
+    .humidity-meter {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .meter-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .meter-value {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 5rem;
+      font-weight: 900;
+      color: var(--cyan);
+      line-height: 1;
+    }
+
+    .meter-bar-wrap {
+      width: 100%;
+      height: 6px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .meter-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--sky), var(--cyan));
+      border-radius: 100px;
+      transition: width 1.8s cubic-bezier(.16,1,.3,1);
+    }
+
+    .threat-list {
+      list-style: none;
+      margin-top: 12px;
+    }
+    .threat-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.92rem;
+      color: rgba(244,248,255,0.75);
+      line-height: 1.5;
+    }
+    .threat-list li:last-child { border-bottom: none; }
+    .threat-dot {
+      flex-shrink: 0;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--cyan);
+      margin-top: 6px;
+    }
+
+    /* ── SERVICE AREA ── */
+    .areas-section {
+      background: var(--surface);
+    }
+
+    .areas-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 40px;
+    }
+
+    .area-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(41,121,200,0.12);
+      border: 1px solid rgba(41,121,200,0.3);
+      padding: 10px 20px;
+      border-radius: 100px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .area-tag:hover {
+      background: rgba(0,194,232,0.15);
+      border-color: var(--cyan);
+    }
+    .area-dot {
+      width: 6px; height: 6px;
+      background: var(--cyan);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, #0d2050 0%, #0a1628 50%, #071530 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -60%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,194,232,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+
+    .cta-inner .section-title { font-size: clamp(2.2rem, 6vw, 4rem); }
+
+    .cta-body {
+      color: rgba(244,248,255,0.65);
+      font-size: 1rem;
+      line-height: 1.75;
+      margin-bottom: 44px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060e1c;
+      padding: 28px 24px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(143,170,200,0.5);
+      letter-spacing: 0.05em;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    footer a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
 
-<h1>Pressure Washing in Pasco County, FL</h1>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="ripple"></div>
+    <div class="ripple"></div>
+    <div class="ripple"></div>
 
-<p>If you're looking for reliable pressure washing in Pasco County, FL, professional exterior cleaning can make a huge difference in how your home looks and feels. Over time, dirt, algae, mold, and mildew build up on surfaces and leave your property looking worn down.</p>
+    <div class="hero-badge">Pasco County, Florida</div>
 
-<p>We provide exterior cleaning services for homeowners in New Port Richey, Trinity, Holiday, and surrounding areas, helping restore surfaces and improve curb appeal.</p>
+    <h1>
+      <span class="outline">Pressure</span>
+      <span>Washing</span>
+      <span style="font-size:0.45em; letter-spacing:0.06em; color:rgba(244,248,255,0.5);">Professionals</span>
+    </h1>
 
-<h2>Our Pressure Washing Services</h2>
+    <p class="hero-sub">
+      Florida's humidity means algae, mold, and mildew never stop. We stop them — with professional exterior cleaning that restores your home's curb appeal fast.
+    </p>
 
-<ul>
-  <li>Driveway Cleaning</li>
-  <li>House Washing</li>
-  <li>Fence Cleaning</li>
-  <li>Pool Cage Cleaning</li>
-  <li>Patio and Deck Cleaning</li>
-</ul>
+    <div class="hero-cta">
+      <a href="https://pascocountypressurewashing.com/" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Get a Free Estimate
+      </a>
+    </div>
 
-<h2>Why Pressure Washing Is Important in Florida</h2>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
 
-<p>Florida’s humid climate creates the perfect environment for algae, mold, and mildew to grow on exterior surfaces. This buildup not only looks bad but can also cause long-term damage if left untreated.</p>
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat reveal">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Services Offered</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Free Estimates</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num">Pasco</div>
+        <div class="stat-label">County Coverage</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num">FL</div>
+        <div class="stat-label">Licensed & Local</div>
+      </div>
+    </div>
+  </div>
 
-<p>Routine pressure washing helps protect your property, extend the life of surfaces, and keep your home looking clean and well-maintained.</p>
+  <!-- SERVICES -->
+  <section class="services-section">
+    <div class="container">
+      <p class="section-label reveal">What We Clean</p>
+      <h2 class="section-title reveal">Our Services</h2>
+      <p class="section-body reveal">
+        From driveways to pool cages, we handle every exterior surface that Florida's climate takes a toll on.
+      </p>
 
-<h2>Serving Pasco County and Nearby Areas</h2>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <span class="service-icon">🚗</span>
+          <div class="service-name">Driveway Cleaning</div>
+          <p class="service-desc">Blast away oil stains, tire marks, and embedded grime from concrete and paver driveways.</p>
+        </div>
+        <div class="service-card reveal">
+          <span class="service-icon">🏠</span>
+          <div class="service-name">House Washing</div>
+          <p class="service-desc">Soft-wash exterior walls to safely remove algae, mold, and mildew without damaging paint or siding.</p>
+        </div>
+        <div class="service-card reveal">
+          <span class="service-icon">🌿</span>
+          <div class="service-name">Fence Cleaning</div>
+          <p class="service-desc">Restore wood, vinyl, and aluminum fences to like-new condition and stop premature deterioration.</p>
+        </div>
+        <div class="service-card reveal">
+          <span class="service-icon">🏊</span>
+          <div class="service-name">Pool Cage Cleaning</div>
+          <p class="service-desc">Remove green algae and oxidation buildup from screen enclosures so you can enjoy your pool again.</p>
+        </div>
+        <div class="service-card reveal">
+          <span class="service-icon">🪴</span>
+          <div class="service-name">Patio & Deck Cleaning</div>
+          <p class="service-desc">Clean pavers, concrete, and wood decking to remove slippery algae and years of Florida weather buildup.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<p>We proudly serve homeowners throughout Pasco County, including New Port Richey, Trinity, Holiday, and nearby communities.</p>
+  <!-- WHY FLORIDA -->
+  <section class="why-section">
+    <div class="container">
+      <p class="section-label reveal">Why It Matters Here</p>
+      <h2 class="section-title reveal">Florida's Climate<br>Is Working Against You</h2>
 
-<h2>Get a Free Estimate</h2>
+      <div class="why-grid">
+        <div>
+          <p class="section-body reveal">
+            Pasco County's hot, humid subtropical climate creates a perfect breeding ground for algae, mold, and mildew year-round. Unlike northern states, there's no hard winter to slow things down — the buildup never stops.
+          </p>
+          <br>
+          <p class="section-body reveal">
+            Routine pressure washing isn't just cosmetic. It protects your investment by preventing surface damage, maintaining property value, and keeping your home safe from slippery buildup.
+          </p>
+          <ul class="threat-list" style="margin-top:32px;">
+            <li class="reveal"><span class="threat-dot"></span>Algae and mold grow faster in Florida's heat and humidity than anywhere else in the country.</li>
+            <li class="reveal"><span class="threat-dot"></span>Untreated buildup can permanently stain concrete, rot wood, and corrode screen frames.</li>
+            <li class="reveal"><span class="threat-dot"></span>Slippery algae on walkways and pool decks is a major safety hazard for your family.</li>
+          </ul>
+        </div>
 
-<p>If your driveway, house, fence, or pool cage is looking dirty or stained, professional cleaning can restore it quickly and safely.</p>
+        <div class="why-visual reveal">
+          <div class="humidity-meter">
+            <span class="meter-label">Average Humidity — Pasco County</span>
+            <div class="meter-value" id="humidityNum">0%</div>
+            <div class="meter-bar-wrap">
+              <div class="meter-bar-fill" id="humidityBar"></div>
+            </div>
+            <span class="meter-label" style="color:var(--cyan);">Year-round mold & algae risk</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<p>👉 <a href="https://pascocountypressurewashing.com/">Visit Pasco County Pressure Washing</a> to learn more or request a free estimate.</p>
+  <!-- SERVICE AREAS -->
+  <section class="areas-section">
+    <div class="container">
+      <p class="section-label reveal">Where We Work</p>
+      <h2 class="section-title reveal">Serving All of<br>Pasco County</h2>
+      <p class="section-body reveal">
+        We're a local team proudly serving communities throughout Pasco County and surrounding areas.
+      </p>
 
+      <div class="areas-tags">
+        <div class="area-tag reveal"><span class="area-dot"></span>New Port Richey</div>
+        <div class="area-tag reveal"><span class="area-dot"></span>Trinity</div>
+        <div class="area-tag reveal"><span class="area-dot"></span>Holiday</div>
+        <div class="area-tag reveal"><span class="area-dot"></span>Port Richey</div>
+        <div class="area-tag reveal"><span class="area-dot"></span>Land O' Lakes</div>
+        <div class="area-tag reveal"><span class="area-dot"></span>Zephyrhills</div>
+        <div class="area-tag reveal"><span class="area-dot"></span>Wesley Chapel</div>
+        <div class="area-tag reveal"><span class="area-dot"></span>Odessa</div>
+        <div class="area-tag reveal"><span class="area-dot"></span>Tarpon Springs</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <p class="section-label reveal" style="text-align:center">Ready to Get Started?</p>
+      <h2 class="section-title reveal">Your Home Deserves<br>to Look Clean</h2>
+      <p class="cta-body reveal">
+        Whether it's a stained driveway, a green pool cage, or years of grime on your home's exterior — we'll restore it quickly, safely, and at a price that makes sense.
+      </p>
+      <div class="reveal">
+        <a href="https://pascocountypressurewashing.com/" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Visit Pasco County Pressure Washing
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Pasco County Pressure Washing — New Port Richey, FL &nbsp;|&nbsp; <a href="https://pascocountypressurewashing.com/">pascocountypressurewashing.com</a></p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 60);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Humidity meter animation
+    const humidityBar = document.getElementById('humidityBar');
+    const humidityNum = document.getElementById('humidityNum');
+    const meterObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        humidityBar.style.width = '75%';
+        let count = 0;
+        const interval = setInterval(() => {
+          count++;
+          humidityNum.textContent = count + '%';
+          if (count >= 75) clearInterval(interval);
+        }, 22);
+        meterObserver.disconnect();
+      }
+    }, { threshold: 0.5 });
+    meterObserver.observe(document.querySelector('.why-visual'));
+  </script>
 </body>
 </html>
